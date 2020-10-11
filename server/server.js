@@ -16,6 +16,9 @@ app.get('/calculations', (req, res) => {
 
 
 app.post('/calculations', (req, res) => {
+    console.log(req.body.firstNum);
+    console.log(req.body.secondNum);
+    console.log(req.body.operator);
     calculationsArray.push(req.body);
     res.sendStatus(200);
 })

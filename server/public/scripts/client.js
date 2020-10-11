@@ -6,13 +6,15 @@ let operator;
 
 function onReady() {
     console.log('jquery')
-    // $('#addButton').on('click', sendAdd);
-    // $('#subtractButton').on('click', subtract);
-    // $('#multiplyButton').on('click', multiply);
-    // $('#divideButton').on('click', divide);
     $('#calculate').on('click', postInputs)
+    $('.operatorButton').on('click', whichOperator);
     getCalc();
 }
+
+function whichOperator() {
+    operator = $(this).val();
+}
+
 
 function getCalc() {
     $.ajax({
@@ -23,7 +25,7 @@ function getCalc() {
         $('#calcList').empty();
         for (let i = 0; i < response.length; i++) {
             $('#calcList').append(`
-                <li>${response[i].firstNum} ${response[i].secondNum}</li>
+                <li>${response[i].firstNum} ${response[i].operator} ${response[i].secondNum}</li>
             `);
         }
     }).catch(function(error){
@@ -39,7 +41,8 @@ function postInputs() {
         url: '/calculations',
         data: {
             firstNum: firstNum,
-            secondNum: secondNum
+            secondNum: secondNum,
+            operator: operator
         }
     }).then(function(response){
         getCalc();
