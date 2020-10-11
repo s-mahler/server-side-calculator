@@ -27,15 +27,15 @@ function getCalc() {
         type: 'GET',
         url: '/calculations'
     }).then(function(response) {
-        console.log('get response', response);
         $('#calcList').empty();
         for (let i = 0; i < response.length; i++) {
+            $('#answer').empty().append(`${response[response.length - 1].answer}`)
             $('#calcList').append(`
                 <li>${response[i].firstNum} ${response[i].operator} ${response[i].secondNum} = ${response[i].answer}</li>
             `);
         }
     }).catch(function(error){
-        alert('Remember to select a mathematical operator!');
+        alert(error);
     })
 }
 
@@ -53,6 +53,7 @@ function postInputs() {
     }).then(function(response){
         getCalc();
     }).catch(function(error){
+        console.log(error);
         alert(error);
     });
 }
