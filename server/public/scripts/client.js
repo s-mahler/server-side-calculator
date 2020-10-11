@@ -8,11 +8,17 @@ function onReady() {
     console.log('jquery')
     $('#calculate').on('click', postInputs)
     $('.operatorButton').on('click', whichOperator);
+    $('#clear').on('click', clearFields);
     getCalc();
 }
 
 function whichOperator() {
     operator = $(this).val();
+}
+
+function clearFields() {
+    $('#firstNumIn').val('');
+    $('#secondNumIn').val('');
 }
 
 
@@ -25,11 +31,11 @@ function getCalc() {
         $('#calcList').empty();
         for (let i = 0; i < response.length; i++) {
             $('#calcList').append(`
-                <li>${response[i].firstNum} ${response[i].operator} ${response[i].secondNum}</li>
+                <li>${response[i].firstNum} ${response[i].operator} ${response[i].secondNum} = ${response[i].answer}</li>
             `);
         }
     }).catch(function(error){
-        alert(error);
+        alert('Remember to select a mathematical operator!');
     })
 }
 

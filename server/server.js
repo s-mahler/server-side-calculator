@@ -16,9 +16,18 @@ app.get('/calculations', (req, res) => {
 
 
 app.post('/calculations', (req, res) => {
-    console.log(req.body.firstNum);
-    console.log(req.body.secondNum);
-    console.log(req.body.operator);
+    if (req.body.operator == '+') {
+        req.body.answer = Number(req.body.firstNum) + Number(req.body.secondNum);
+    } else if (req.body.operator == '-') {
+        req.body.answer = req.body.firstNum - req.body.secondNum;
+    } else if (req.body.operator == '*') {
+        req.body.answer = req.body.firstNum * req.body.secondNum;
+    } else if (req.body.operator == '/') {
+        req.body.answer = req.body.firstNum / req.body.secondNum;
+    } else if (req.body.operator == undefined) {
+        // want to add catches if the user doesnt complete all fields
+        console.log('needs operator');
+    }
     calculationsArray.push(req.body);
     res.sendStatus(200);
 })
