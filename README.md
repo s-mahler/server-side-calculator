@@ -13,7 +13,7 @@ This project creates a calculator that takes two numerical inputs and an operato
 
 ## Installation
 
-1. Install express and body-parser using Node Package Manager
+1. Install express and body-parser, `npm install express` and `npm install body-parser`
 2. Run `npm start` in your terminal to start the local server
 
 ## Usage
@@ -29,3 +29,7 @@ This project creates a calculator that takes two numerical inputs and an operato
 - HTML
 - NODE
     - Express
+
+## Support
+
+Any questions can be directed to [mahler.sam@gmail.com](mailto:mahler.sam@gmail.com)
