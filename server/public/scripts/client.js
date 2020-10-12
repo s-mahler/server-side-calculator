@@ -1,5 +1,3 @@
-console.log('js');
-
 $(document).ready(onReady);
 
 let operator;
