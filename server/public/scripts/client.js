@@ -5,23 +5,28 @@ $(document).ready(onReady);
 let operator;
 
 function onReady() {
-    console.log('jquery')
+    // event listeners
     $('#calculate').on('click', postInputs)
     $('.operatorButton').on('click', whichOperator);
     $('#clear').on('click', clearFields);
+    
+    //initial get values for the DOM
     getCalc();
 }
 
+// function that selects the operator of the button pressed
 function whichOperator() {
     operator = $(this).val();
 }
 
+
+// clear number one and number two input fields
 function clearFields() {
     $('#firstNumIn').val('');
     $('#secondNumIn').val('');
 }
 
-
+// uses GET to append information from the server to the DOM
 function getCalc() {
     $.ajax({
         type: 'GET',
@@ -39,6 +44,7 @@ function getCalc() {
     })
 }
 
+// POSTs inputs from the DOM to the server and then runs the GET function to append
 function postInputs() {
     let firstNum = $('#firstNumIn').val();
     let secondNum = $('#secondNumIn').val();
@@ -53,7 +59,6 @@ function postInputs() {
     }).then(function(response){
         getCalc();
     }).catch(function(error){
-        console.log(error);
         alert(error);
     });
 }
