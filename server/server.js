@@ -44,6 +44,7 @@ app.post('/calculations', (req, res) => {
         // want to add catches if the user doesnt complete all fields
         // catches with a 400 error, but returns what seems to be extra errors in the terminal 
         // isnt catching blank input for numbers
+        // could have done an if/else in the ajax post (ajax being in the else and if conditionals being empty strings/undefined checks) 
     }
     res.sendStatus(200);
 })
